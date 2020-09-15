@@ -26,6 +26,7 @@ package com.mallowigi.config.associations.ui.columns
 import com.intellij.openapi.Disposable
 import com.intellij.openapi.ui.ComboBox
 import com.intellij.openapi.util.io.FileUtilRt
+import com.intellij.ui.CollectionComboBoxModel
 import com.intellij.ui.SimpleListCellRenderer
 import com.intellij.util.PathUtil
 import com.intellij.util.ui.table.IconTableCellRenderer
@@ -54,7 +55,9 @@ class IconSelectableColumnInfo(private val parent: Disposable) : EditableColumnI
         icon = MTIcons.getFileIcon(value?.icon!!)
       }
     }
-    comboBox = ComboBox(data.toTypedArray())
+    comboBox = ComboBox()
+    comboBox.model = CollectionComboBoxModel(data)
+    comboBox.maximumRowCount = 7;
     comboBox.renderer = assocRenderer
 
     defaultCellEditor = DefaultCellEditor(comboBox)
@@ -93,7 +96,7 @@ class IconSelectableColumnInfo(private val parent: Disposable) : EditableColumnI
   }
 
   override fun getColumnClass(): Class<*> {
-    return RegexAssociation.javaClass
+    return RegexAssociation::class.java
   }
 
 
