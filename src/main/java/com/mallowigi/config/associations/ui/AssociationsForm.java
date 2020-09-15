@@ -34,6 +34,7 @@ import com.intellij.util.ui.table.TableModelEditor;
 import com.mallowigi.config.AtomSettingsBundle;
 import com.mallowigi.config.associations.AtomAssocConfig;
 import com.mallowigi.config.associations.ui.columns.IconEditableColumnInfo;
+import com.mallowigi.config.associations.ui.columns.IconSelectableColumnInfo;
 import com.mallowigi.config.associations.ui.columns.NameEditableColumnInfo;
 import com.mallowigi.config.associations.ui.columns.PatternEditableColumnInfo;
 import com.mallowigi.config.associations.ui.internal.AssociationsTableItemEditor;
@@ -59,7 +60,9 @@ public final class AssociationsForm extends JPanel implements SettingsFormUI, Di
   private final transient ColumnInfo[] fileColumns = {
       new NameEditableColumnInfo(this),
       new PatternEditableColumnInfo(this),
-      new IconEditableColumnInfo(this)};
+      new IconEditableColumnInfo(this),
+      new IconSelectableColumnInfo(this)
+  };
 
   private final transient ColumnInfo[] folderColumns = {
       new NameEditableColumnInfo(this),
